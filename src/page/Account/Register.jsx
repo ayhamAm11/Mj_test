@@ -85,8 +85,8 @@ const isValid = isPhoneValid(values.phone);
       
    </>
 })}
- <div className='flex justify-between items-center px-3 py-2 checkbox w-full h-full'>
-       <div className='flex justify-center items-center' >
+ <div className='flex justify-between items-center px-3 py-2 checkbox w-full h-full flex-col border-none'>
+       <div className='flex justify-center items-center ' >
         
        <input className='none' type="checkbox" name="remmember" id="remmember" />
        <label className='custom-check' htmlFor="remmember"></label>

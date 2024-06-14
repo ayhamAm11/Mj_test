@@ -9,6 +9,9 @@ import axios from 'axios'
 import UnsendedTable from '../component/order/UnsendedTable'
 import SendedOrder from '../component/order/SendedOrder'
 import OnTheWayOrder from '../component/order/OnTheWayOrder'
+import { content } from '../content/text'
+import { PiWhatsappLogoDuotone } from "react-icons/pi";
+
 function Orders() {
   const [displayTable , setDesplayTable] = useState('unsended')
   const user = useSelector(state =>state.user.user)
@@ -21,6 +24,7 @@ function Orders() {
     `api/order/user/${user?._id}`,
   ];
   const dispatch = useDispatch()
+  const lang= useSelector(state => state.user.lang)
   const orders = useSelector(state => state.order)
   console.log(orders)
   const handleSendOrders = async(data)=>{
@@ -96,6 +100,27 @@ function Orders() {
       <option value="sended">sended order</option>
       <option value="valid">order on the way</option>
     </select>
+    <div>
+      <h1 className='text-center text-xl mb-10 '>
+          {content.order.category[lang]}
+      </h1>
+      <div className='flex-center'>
+        <div className='grid grid-cols-2 gap-5'>
+          <div className=''>
+                <img src="https://play-lh.googleusercontent.com/gk0s1DxZutnAlEE5GZzPe-DHMNwRGlgC49--bcUxhLJJTKxZykbXsbC7ZXwFj4Inmg=w240-h480-rw" alt="bit" className='w-[100px] ' />
+          </div>
+          <div className='flex items-center'>
+                <h1 className='px-4 py-3 rounded-md cursor-pointer bg-move2 text-ofwhite'>
+                  {content.order.bank[lang]}
+                </h1>
+          </div>
+        </div>
+      </div>
+      <div className='text-center flex flex-row-reverse justify-center mt-6'>
+        <h1>{content.order.whats[lang]}</h1> 
+        <PiWhatsappLogoDuotone className=' text-3xl text-green' />
+      </div>
+    </div>
       {displayTable === 'unsended' &&<UnsendedTable data={orders.unsendedOrder} handleSendOrders={handleSendOrders} />}
       {displayTable === 'sended' &&<SendedOrder data={orders.sendedOrder}  />}
       {displayTable === 'valid' &&<OnTheWayOrder data={orders.validOrder}  />}

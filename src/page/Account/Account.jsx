@@ -15,8 +15,8 @@ function Account() {
   },[])
   return (
     <div className='flex min-h-screen w-full p-10 bg-grey justify-center items-center'>
-        <div className='grid grid-cols-5 min-h-[80vh] grid-rows-1 h-full w-full  gap-4 bg-white shadow-md '>
-        <div className=' col-span-2 flex   '>
+        <div className='grid sm:grid-cols-5 min-h-[80vh] grid-rows-1 h-full w-full  gap-4 bg-white shadow-md '>
+        <div className=' col-span-2  hidden sm:flex  '>
             <img src={img.collection} className='w-full h-full object-cover' alt="" srcset="" />
         </div>
         <div className='flex items-center col-span-3  p-2'>

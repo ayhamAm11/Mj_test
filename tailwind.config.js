@@ -14,7 +14,8 @@ module.exports = {
         ofblack: "#7c7c7cb5",
         ofwhite: "#ECEDEF",
         white: "#FFFFFF",
-        grey:"#F7F7F7"
+        grey:"#F7F7F7",
+        green : "#3df929"
       },
       wordSpacing: {
         'wide': '0.5em',

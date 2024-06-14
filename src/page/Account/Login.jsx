@@ -27,7 +27,7 @@ function Login({setIsHaveAccount}) {
   },[status])
   return (
     <div className='w-4/5 flex flex-col '>
-      <div className="title w-full flex justify-between items-center">
+      <div className="title w-full flex justify-between items-center flex-col sm:flex-row">
       <h1 className='text-4xl text-move2 pb-5'>Welcome Back</h1>
       <span  className='mb-5 p-3 bg-gold2/80 text-white font-semibold w-max rounded-lg text-sm cursor-pointer ml-auto' onClick={()=>{setIsHaveAccount(false)}}>SignUp page</span >
      
@@ -38,7 +38,7 @@ function Login({setIsHaveAccount}) {
 
 return <FormInput key={input.id} {...input} value={values[input.name]} onChange={(e)=>{handleChange(setValues,input.name,e.target.value)}} className='bg-ofwhite p-2 text-lg w-full'/>
 })}
- <div className='flex justify-between items-center checkbox h-full w-full'>
+ <div className='flex justify-between items-center checkbox h-full w-full border-none flex-col'>
        <div className='flex justify-center items-center h-full w-full' >
         
        <input className='none' type="checkbox" name="remmember" id="remmember" />

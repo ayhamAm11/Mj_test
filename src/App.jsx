@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden bg-white text-black">
       
         <Routes>
           <Route path="" element={<Main/>} >

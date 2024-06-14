@@ -63,7 +63,7 @@ const HeroSection = () => {
             transition={{ duration: 0.7 }}
             className='rounded-full px-5 py-2 poltawski-nowy-normal bg-move text-xl '
           >
-          {lang == 'arb ' ? "  تسوق الان ": "קנו עכשיו" }
+          {lang == 'arb' ? "  تسوق الان ": "קנו עכשיו" }
           </motion.button>
           </Link>
         </div>
