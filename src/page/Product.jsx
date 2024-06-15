@@ -11,6 +11,8 @@ const Product = () => {
   const user = useSelector(state =>state.user.user)
   const Navigate = useNavigate()
   const dispatch = useDispatch()
+  
+
     const [item , setItem] = useState(null)
     const [loading , setLoading] = useState(false)
     useEffect(()=>{
@@ -31,9 +33,12 @@ const Product = () => {
     },[])
     const [display , setDisplay] = useState(0)
     const addOrderFunc = (data) => {
-      // productID,count,price , imgUrl , title
+      if(user){
       dispatch(addOrder(data))
-      
+      console.log(user)
+      }else{
+        Navigate('/account?newAccount=false')
+      }
     };
   return (
     <section>

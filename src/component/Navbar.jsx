@@ -8,7 +8,10 @@ import DropDown from './shared/DropDown'
 import useOutsideClick from '../hooks/useOutsideClick'
 import { FcMenu } from "react-icons/fc";
 import logo from '../assets/logo.png'
-
+import { useDispatch } from 'react-redux'
+// import { changeLang } from '../../redux/slices/userSlice'
+import { IoLanguageOutline } from "react-icons/io5";
+import { changeLang } from '../redux/slices/userSlice'
 
 const Navbar = () => {
     const loading = useSelector(state => state.user.loading)
@@ -16,12 +19,21 @@ const Navbar = () => {
    const auth = useSelector(state => state.user.auth)
    const user = useSelector(state =>state.user.user)
    const [togel , setTogel] = useState(false)
+   const [togelLang , setTogelLang] = useState(true)
    const dropDownRef = useRef('')
    const [isdropDownOpen,setIsDropDownOpen] = useState(false)
 //    console.table({loading,status,auth,user},['data'])
     const list = navList
     const activePage = useHref()
 useOutsideClick(dropDownRef,()=>{setIsDropDownOpen(false)})
+
+const dispatch = useDispatch()
+
+const changeLanguage =(lang)=>{
+    dispatch(changeLang({lang}))
+    setIsDropDownOpen(false)
+    setTogelLang(false)
+ }
   return (
     <nav className='p-3 sm:p-6  items-center justify-between flex relative '>
         <div>
@@ -46,6 +58,12 @@ useOutsideClick(dropDownRef,()=>{setIsDropDownOpen(false)})
         </div>
         
         <div className='flex gap-2 lato-bold items-center'>
+            <div 
+            onClick={()=>setTogelLang(!togelLang)}
+            className='flex flex-col gap-1 items-center relative cursor-pointer mr-5'>
+                <IoLanguageOutline className='text-move2 text-2xl' />
+                <hr className=' border-t-1 border-move2 w-5' />
+            </div>
         {loading && status == 'loading' ? <div className='loader'></div>:
         <>
         {status === 'succeeded'?
@@ -56,7 +74,6 @@ useOutsideClick(dropDownRef,()=>{setIsDropDownOpen(false)})
             </div>
             {isdropDownOpen && <DropDown setIsDropDownOpen={setIsDropDownOpen}/>}
         </div>
-            
         :<>
             <div className=' p-1 py-2 px-4 border-2 border-move2 rounded-3xl '>
                 <Link to={'/account?newAccount=false'}>login</Link>
@@ -88,6 +105,25 @@ useOutsideClick(dropDownRef,()=>{setIsDropDownOpen(false)})
                     </>
                 ))
             }
+            </ul>
+        </div>
+        <div  
+        className={`absolute transition-all ${togelLang?'right-5 ':'right-[-120px]'}  top-20 z-20 p-3 rounded-md bg-move `}>
+            <ul className='flex flex-col gap-1   '>
+                <li 
+                onClick={()=>{
+                    changeLanguage('arb')
+                }}
+                className={`text-lg font-semibold cursor-pointer`}>
+                    Arabic
+                </li>
+                <li
+                 onClick={()=>{
+                    changeLanguage('ubr')
+                }}
+                 className={`text-lg font-semibold cursor-pointer`}>
+                    Hebrew
+                </li>
             </ul>
         </div>
     </nav>
